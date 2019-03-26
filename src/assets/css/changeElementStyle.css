@@ -1,0 +1,141 @@
+/*表单*/
+.el-form-item__content {
+    line-height: 28px;
+}
+.el-form-item__error {
+    top: 101%
+}
+/*输入框*/
+.el-input__inner {
+    border-radius: 2px;
+    border: 1px solid rgb(234,235,237);
+}
+
+.el-input.is-disabled .el-input__inner {
+    background-color: white;
+    border: none;
+}
+
+.el-date-editor.el-input, .el-date-editor.el-input__inner {
+    width: auto;
+}
+
+/*下拉*/
+.el-dropdown {
+    font-size: 12px;
+}
+
+/*导航标签*/
+.el-tabs--card > .el-tabs__header .el-tabs__nav {
+    border: none;
+
+}
+
+.el-tabs--card > .el-tabs__header {
+    border: none;
+}
+
+.el-tabs--card > .el-tabs__header .el-tabs__item {
+    border-bottom: none;
+}
+
+.el-tabs__item {
+    height: 38px;
+    line-height: 36px;
+    background-color: rgb(250, 250, 250);
+    color: #999;
+}
+.el-tabs__item:last-child {
+    border-right: 1px solid  #E4E7ED
+}
+.el-tabs__item:hover {
+    color: #999;
+}
+.el-tabs__item.is-active {
+    color: white;
+    background-color: #2f4050;
+}
+
+/*表格样式*/
+.el-table thead {
+    color: rgb(51, 51, 51);
+}
+
+.el-table td, .el-table th {
+    text-align: center;
+    padding: 2px 0;
+}
+
+.el-table .cell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*栅格样式*/
+.grid-content {
+    /*min-height: 30px;*/
+}
+
+.el-row {
+    /*margin-bottom: 10px;*/
+}
+
+.bg-purple {
+    /*background: #d3dce6;*/
+}
+
+/*菜单样式*/
+.el-menu {
+    border-right: none;
+}
+
+/*页码分页*/
+.el-pagination {
+    float: right;
+}
+
+.el-pagination.is-background .el-pager li{
+    margin: 0;
+    border: 1px solid #ddd;
+    border-left: none;
+}
+.el-pagination.is-background .el-pager li:first-child {
+    border-left: 1px solid #ddd;
+}
+    /*自定义字体图标*/
+.el-icon-meicon {
+    background: url("../logo.png") center no-repeat;
+    background-size: cover;
+    font-size: 16px;
+}
+
+.el-icon-meicon:before {
+    content: "\e611";
+    font-size: 16px;
+}
+
+/*tag标签样式*/
+.el-tag + .el-tag {
+    margin-left: 10px;
+}
+
+.button-new-tag {
+    margin-left: 10px;
+    height: 32px;
+    line-height: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.input-new-tag {
+    width: 90px;
+    margin-left: 10px;
+    vertical-align: bottom;
+}
+
+/*图标颜色*/
+
+.el-icon-question:before {
+    color: #e6a23c;
+}

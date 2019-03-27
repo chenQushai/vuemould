@@ -2,9 +2,7 @@
     <div>
         <div class="outBox">
             <div class="sideLeft" :class="{collapseSideLeft: isCollapse}">
-
                 <div class="personMsgBox" v-if="isCollapse === false">
-
                     <div class="headImage">
                         <img class="image" src="../assets/img/headImage.png" alt="">
                     </div>
@@ -116,11 +114,8 @@
                     </el-col>
                 </div>
             </div>
-
             <div class="sideRight">
-
                 <div class="header">
-
                     <div class="commonHeadBox">
                         <div class="head">
                             <div :class="isCollapse ? 'menuButtonCollapse' : 'menuButton' "
@@ -176,7 +171,6 @@
 <script>
 
     import store from "../store";
-
     export default {
         name: 'HelloWorld',
         data() {
@@ -186,7 +180,6 @@
                 editableTabs2: [],
                 tabIndex: 0,
                 isCollapse: false
-
             }
         },
         computed: {},
@@ -202,7 +195,6 @@
                 store.state.activeNav = [];
                 store.state.editableTabs2 = [];
                 store.state.selectValue = this.selectValue;
-                console.log(store.state.selectValue);
                 window.location.href = "#/home";
             };
             /****
@@ -267,7 +259,6 @@
                 this.$store.commit("addTabs", this.editableTabs2);
                 this.selectValue = newTabName;
                 this.$store.commit("changeTabsValue", this.selectValue);
-                // this.activeNav.push({path: submenu.route});
                 this.$store.commit("addRoutePath", submenu.route);
             },
             /****
@@ -373,7 +364,7 @@
             /****
              * 关闭操作
              */
-            closeWindow() {;
+            closeWindow() {
                 window.location.href = "#/home";
                 this.tabIndex = 0;
                 this.editableTabs2 = [];
@@ -440,12 +431,10 @@
                 width: 100%;
                 height: 80px;
                 background-color: rgb(39, 59, 75);
-
                 .headImage {
                     width: 64px;
                     height: 64px;
                     padding: 5px;
-
                     .image {
                         float: left;
                         width: 100%;

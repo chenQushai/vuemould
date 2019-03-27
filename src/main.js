@@ -11,6 +11,8 @@ import ElementUI from 'element-ui';
 import config from './lib/config';
 import vfilters from './lib/vfilters';
 import 'babel-polyfill'
+import {vuePlugin} from 'castle-haozijunqaq-utils'
+Vue.use(vuePlugin);
 
 //全局注册过滤器
 for(let key in vfilters){

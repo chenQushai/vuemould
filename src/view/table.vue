@@ -236,7 +236,7 @@
                 <el-col :span="8">
                     <div class="grid-content bg-purple">
                         <div class="group-form">
-                            <label class="form-label">编辑内容内型</label>
+                            <label class="form-label">编辑内容</label>
                             <div class="formInput-editor">
                                 <el-input size="mini" placeholder="请输入内容"></el-input>
                             </div>
@@ -290,7 +290,7 @@
                 <el-col :span="8">
                     <div class="grid-content bg-purple">
                         <div class="group-form">
-                            <label class="form-label">编辑内容类型</label>
+                            <label class="form-label">编辑内容</label>
                             <div class="formInput-editor">
                                 <el-input size="mini" placeholder="请输入内容"></el-input>
                             </div>

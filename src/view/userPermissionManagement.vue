@@ -6,7 +6,7 @@
                     <div class="leftColumn">
                         <div class="operatorBox">
                             <label class="form-label form-col-25">类型：</label>
-                            <div class="formInput-editor formInput-editor-col-75">
+                            <div class="formInput-editor formInput-editor-col-75 line-height-28">
                                 <el-select v-model="value" size="mini" placeholder="请选择">
                                     <el-option
                                         v-for="item in options"
@@ -114,7 +114,6 @@
         background-color: white;
         .operatorBox {
             overflow: hidden;
-            border-bottom: 1px solid rgb(234, 235, 237);
         }
         ul {
             width: 100%;

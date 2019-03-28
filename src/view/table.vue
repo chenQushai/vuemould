@@ -4,27 +4,21 @@
             <div class="inner">
                 <el-row :gutter="5">
                     <el-col :span="6">
-                        <div class="grid-content bg-purple">
-                            <div class="search-form">
-                                <label class="search-form-label">所属学校：</label>
-                                <input type="text" class="search-form-input ">
-                            </div>
+                        <div class="search-form">
+                            <label class="search-form-label">所属学校：</label>
+                            <el-input size="mini" class="search-form-input "></el-input>
                         </div>
                     </el-col>
                     <el-col :span="6">
-                        <div class="grid-content bg-purple">
-                            <div class="search-form">
-                                <label class="search-form-label">所属学校：</label>
-                                <input type="text" class="search-form-input">
-                            </div>
+                        <div class="search-form">
+                            <label class="search-form-label">所属学校：</label>
+                            <el-input size="mini" class="search-form-input "></el-input>
                         </div>
                     </el-col>
                     <el-col :span="6">
-                        <div class="grid-content bg-purple">
-                            <div class="search-form">
-                                <label class="search-form-label search-form-label-col-40">所属学校地址：</label>
-                                <input type="text" class="search-form-input search-form-input-60 ">
-                            </div>
+                        <div class="search-form">
+                            <label class="search-form-label search-form-label-col-40">所属学校地址：</label>
+                            <el-input size="mini" class="search-form-input search-form-input-60 "></el-input>
                         </div>
                     </el-col>
                     <el-col :span="6">
@@ -48,36 +42,30 @@
 
                 <el-row :gutter="5">
                     <el-col :span="12">
-                        <div class="grid-content bg-purple">
-                            <div class="search-form">
-                                <label class="search-form-label search-form-label-col-16">所属学校：</label>
-                                <input type="text" class="search-form-input search-form-input-84">
-                            </div>
+                        <div class="search-form">
+                            <label class="search-form-label search-form-label-col-16">所属学校：</label>
+                            <el-input size="mini" class="search-form-input search-form-input-84"></el-input>
                         </div>
                     </el-col>
 
                     <el-col :span="6">
-                        <div class="grid-content bg-purple">
-                            <div class="search-form">
-                                <label class="search-form-label search-form-label-col-40">所属学校区域：</label>
-                                <input type="text" class="search-form-input search-form-input-60">
-                            </div>
+                        <div class="search-form">
+                            <label class="search-form-label search-form-label-col-40">所属学校区域：</label>
+                            <el-input size="mini" class="search-form-input search-form-input-60"></el-input>
                         </div>
                     </el-col>
                     <el-col :span="6">
-                        <div class="grid-content bg-purple">
-                            <div class="search-form">
-                                <label class="search-form-label ">所属学校：</label>
-                                <div class="select">
-                                    <el-select v-model="value" size="mini" placeholder="请选择">
-                                        <el-option
-                                            v-for="item in options"
-                                            :key="item.value"
-                                            :label="item.label"
-                                            :value="item.value">
-                                        </el-option>
-                                    </el-select>
-                                </div>
+                        <div class="search-form">
+                            <label class="search-form-label ">所属学校：</label>
+                            <div class="select">
+                                <el-select v-model="value" size="mini" placeholder="请选择">
+                                    <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                    </el-option>
+                                </el-select>
                             </div>
                         </div>
                     </el-col>
@@ -85,27 +73,21 @@
 
                 <el-row :gutter="5">
                     <el-col :span="6">
-                        <div class="grid-content bg-purple">
-                            <div class="search-form">
-                                <label class="search-form-label ">所属学校：</label>
-                                <input type="text" class="search-form-input">
-                            </div>
+                        <div class="search-form">
+                            <label class="search-form-label ">所属学校：</label>
+                            <el-input size="mini" class="search-form-input"></el-input>
                         </div>
                     </el-col>
                     <el-col :span="6">
-                        <div class="grid-content bg-purple">
-                            <div class="search-form">
-                                <label class="search-form-label">所属学校：</label>
-                                <input type="text" class="search-form-input">
-                            </div>
+                        <div class="search-form">
+                            <label class="search-form-label">所属学校：</label>
+                            <el-input size="mini" class="search-form-input"></el-input>
                         </div>
                     </el-col>
                     <el-col :span="6">
-                        <div class="grid-content bg-purple">
-                            <div class="search-form">
-                                <label class="search-form-label search-form-label-col-40">所属学校地点：</label>
-                                <input type="text" class="search-form-input search-form-input-60">
-                            </div>
+                        <div class="search-form">
+                            <label class="search-form-label search-form-label-col-40">所属学校地点：</label>
+                            <el-input size="mini" class="search-form-input search-form-input-60"></el-input>
                         </div>
                     </el-col>
                     <el-col :span="6">
@@ -234,9 +216,9 @@
                     background
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
-                    :current-page="currentPage4"
-                    :page-sizes="[50, 100, 150, 200]"
-                    :page-size="100"
+                    :current-page="currentPage"
+                    :page-sizes="[10, 20, 30, 40]"
+                    :page-size="10"
                     layout=" prev, pager, next, ->,sizes ,total"
                     :total="500">
                 </el-pagination>
@@ -246,7 +228,7 @@
         <el-dialog
             title="编辑大弹窗"
             :visible.sync="detailDialog"
-            width="60%"
+            width="800px"
             v-loading.fullscreen.lock="loading"
             element-loading-background="rgba(0, 0, 0, 0.5)"
         >
@@ -352,7 +334,7 @@
                 detailDialog: false,
                 loading: false,
                 tableLoading: false,
-                currentPage4: 4,
+                currentPage: 1,
                 tableData: [
                     {
                         id: 0,
@@ -590,13 +572,13 @@
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     iconClass: 'el-icon-question'
-                }).then( () => {
+                }).then(() => {
                     this.$message({
                         showClose: true,
                         type: 'success',
                         message: '删除成功!'
                     });
-                }) .catch(() => {
+                }).catch(() => {
                     this.$message({
                         showClose: true,
                         type: 'info',

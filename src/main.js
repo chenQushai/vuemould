@@ -6,7 +6,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css';
-import './assets/css/changeElementStyle.css'
+import './assets/css/changeElementStyle.css';
 import ElementUI from 'element-ui';
 import config from './lib/config';
 import vfilters from './lib/vfilters';

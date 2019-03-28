@@ -167,7 +167,6 @@
         </div>
     </div>
 </template>
-
 <script>
 
     import store from "../store";
@@ -461,6 +460,7 @@
         .sideRight {
             width: 100%;
             min-width: 1136px;
+            overflow: auto;
             .header {
                 width: 100%;
                 height: auto;
@@ -611,7 +611,6 @@
                     padding: 20px 15px 0 15px;
                     background-color: #e5e5e5;
                     overflow: auto;
-
                 }
             }
             /*.childView::-webkit-scrollbar {*/

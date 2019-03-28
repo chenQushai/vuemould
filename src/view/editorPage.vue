@@ -5,97 +5,95 @@
             <el-button type="success" size="mini" icon="el-icon-document" @click="fail">失败</el-button>
             <el-button type="primary" size="mini" icon="el-icon-plus" @click="dialogTableVisible=true">新增</el-button>
             <el-button type="success" size="mini" icon="el-icon-download" @click="submitForm('ruleForm')">提交</el-button>
+            <el-button type="warning" size="mini" icon="el-icon-warning">警告按钮</el-button>
+            <el-button type="danger" size="mini" icon="el-icon-info">危险按钮</el-button>
         </div>
 
         <el-dialog title="小弹窗" :visible.sync="dialogTableVisible" width="35%">
             <div class="popContent">
-                <div class="formBox">
-                    <label class="form-label">新增：</label>
-                    <div class="formInput-editor">
-                        <el-input size="mini" placeholder="请输入内容"></el-input>
+                <el-form :rules="ruleAdd" :model="ruleFormAdd" ref="add">
+                    <div class="formBox">
+                        <label class="form-label">新增：</label>
+                        <div class="formInput-editor">
+                            <el-form-item prop="add">
+                                <el-input size="mini" v-model="ruleFormAdd.add" placeholder="请输入内容"></el-input>
+                            </el-form-item>
+                        </div>
                     </div>
-                </div>
-                <div class="formBox">
-                    <label class="form-label">选择：</label>
-                    <div class="formInput-editor">
-                        <el-select v-model="value" size="mini" style="width: 100%" placeholder="请选择">
-                            <el-option
-                                v-for="item in options"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
-                            </el-option>
-                        </el-select>
+                    <div class="formBox">
+                        <label class="form-label">选择：</label>
+                        <div class="formInput-editor">
+                            <el-select v-model="value" size="mini" style="width: 100%" placeholder="请选择">
+                                <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </div>
                     </div>
-                </div>
-                <div class="formBox" style="height: 90px">
-                    <label class="form-label Height">备注</label>
-                    <div class="text-area text-area-col-60">
-                        <textarea class="text-area-inner"></textarea>
+                    <div class="formBox" style="height: 90px">
+                        <label class="form-label Height">备注</label>
+                        <div class="text-area text-area-col-60">
+                            <textarea class="text-area-inner"></textarea>
+                        </div>
                     </div>
-                </div>
+                </el-form>
             </div>
             <div slot="footer" class="dialog-footer">
-                <el-button type="primary" size="mini" @click="dialogTableVisible = false">确 定</el-button>
+                <el-button type="primary" size="mini" @click="newAdd('add')">确 定</el-button>
             </div>
         </el-dialog>
-
-
+        <p style="font-size: 13px;color: #676a6c;margin: 20px 0">可选择颜色</p>
+        <span style="font-size: 13px;color: #676a6c">蓝色（color-blue）、绿色（color-green）、红色（color-red）、黄色（color-yellow）、灰色（color-gray）</span>
         <!--可编辑内容-->
         <div class="searchForm">
             <p style="font-size: 13px;color: #676a6c;margin-bottom: 20px">可编辑的输入框</p>
-            <el-form :rules="rules" :model="ruleForm" ref="ruleForm">
+            <el-form :rules="rules" :model="ruleForm" status-icon ref="ruleForm">
                 <el-row :gutter="10">
                     <el-col :span="6">
-                        <div class="grid-content bg-purple">
-                            <div class="group-form">
-                                <label class="form-label form-col-40">所属组织内容：</label>
-                                <div class="formInput-editor formInput-editor-col-60">
-                                    <el-form-item prop="name">
-                                        <el-input size="mini" v-model="ruleForm.name" placeholder="请输入内容"></el-input>
-                                    </el-form-item>
-                                </div>
-                                <span class="required">*</span>
+                        <div class="group-form">
+                            <label class="form-label form-col-40">所属组织内容：</label>
+                            <div class="formInput-editor formInput-editor-col-60">
+                                <el-form-item prop="name">
+                                    <el-input size="mini" v-model="ruleForm.name" placeholder="请输入内容"></el-input>
+                                </el-form-item>
+                            </div>
+                            <span class="required">*</span>
+                        </div>
+                    </el-col>
+                    <el-col :span="6">
+                        <div class="group-form">
+                            <label class="form-label">考试名称：</label>
+                            <div class="formInput-editor">
+                                <el-form-item prop="testName">
+                                    <el-input size="mini" v-model="ruleForm.testName"
+                                              placeholder="请输入内容"></el-input>
+                                </el-form-item>
+                            </div>
+                            <span class="required">*</span>
+                        </div>
+                    </el-col>
+                    <el-col :span="6">
+                        <div class="group-form">
+                            <label class="form-label">手机验证：</label>
+                            <div class="formInput-editor">
+                                <el-form-item prop="phone">
+                                    <el-input size="mini" v-model="ruleForm.phone" placeholder="请输入内容"></el-input>
+                                </el-form-item>
+                                <span class="el-icon-required"></span>
                             </div>
                         </div>
                     </el-col>
                     <el-col :span="6">
-                        <div class="grid-content bg-purple">
-                            <div class="group-form">
-                                <label class="form-label">考试名称：</label>
-                                <div class="formInput-editor">
-                                    <el-form-item prop="testName">
-                                        <el-input size="mini" v-model="ruleForm.testName"
-                                                  placeholder="请输入内容"></el-input>
-                                    </el-form-item>
-                                </div>
-                                <span class="required">*</span>
-                            </div>
-                        </div>
-                    </el-col>
-                    <el-col :span="6">
-                        <div class="grid-content bg-purple">
-                            <div class="group-form">
-                                <label class="form-label">手机验证：</label>
-                                <div class="formInput-editor">
-                                    <el-form-item prop="phone">
-                                        <el-input size="mini" v-model="ruleForm.phone" placeholder="请输入内容"></el-input>
-                                    </el-form-item>
-                                    <span class="el-icon-required"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </el-col>
-                    <el-col :span="6">
-                        <div class="grid-content bg-purple">
-                            <div class="group-form">
-                                <label class="form-label">电话号码：</label>
-                                <div class="formInput-editor">
-                                    <el-form-item prop="telphone">
-                                        <el-input size="mini" v-model="ruleForm.telphone"
-                                                  placeholder="请输入内容"></el-input>
-                                    </el-form-item>
-                                </div>
+                        <div class="group-form">
+                            <label class="form-label">电话号码：</label>
+                            <div class="formInput-editor">
+                                <el-form-item prop="telphone">
+                                    <el-input size="mini" v-model="ruleForm.telphone"
+                                              placeholder="请输入内容"></el-input>
+                                </el-form-item>
                             </div>
                         </div>
                     </el-col>
@@ -103,27 +101,23 @@
 
                 <el-row :gutter="10">
                     <el-col :span="12">
-                        <div class="grid-content bg-purple">
-                            <div class="group-form">
-                                <label class="form-label form-col-20">身份证号：</label>
-                                <div class="formInput-editor formInput-editor-col-80">
-                                    <el-form-item prop="idCard">
-                                        <el-input size="mini" v-model="ruleForm.idCard" placeholder="请输入内容"></el-input>
-                                    </el-form-item>
-                                </div>
+                        <div class="group-form">
+                            <label class="form-label form-col-20">身份证号：</label>
+                            <div class="formInput-editor formInput-editor-col-80">
+                                <el-form-item prop="idCard">
+                                    <el-input size="mini" v-model="ruleForm.idCard" placeholder="请输入内容"></el-input>
+                                </el-form-item>
                             </div>
                         </div>
                     </el-col>
                     <el-col :span="12">
-                        <div class="grid-content bg-purple">
-                            <div class="group-form">
-                                <label class="form-label form-col-16">显示成绩：</label>
-                                <div class="formInput-editor formInput-editor-col-84">
-                                    <el-form-item prop="showScore">
-                                        <el-input size="mini" v-model="ruleForm.showScore"
-                                                  placeholder="请输入内容"></el-input>
-                                    </el-form-item>
-                                </div>
+                        <div class="group-form">
+                            <label class="form-label form-col-16">显示成绩：</label>
+                            <div class="formInput-editor formInput-editor-col-84">
+                                <el-form-item prop="showScore">
+                                    <el-input size="mini" v-model="ruleForm.showScore"
+                                              placeholder="请输入内容"></el-input>
+                                </el-form-item>
                             </div>
                         </div>
                     </el-col>
@@ -131,37 +125,33 @@
 
                 <el-row :gutter="10">
                     <el-col :span="6">
-                        <div class="grid-content bg-purple">
-                            <div class="group-form">
-                                <label class="form-label form-col-40">选择类型：</label>
-                                <div class="formInput-editor formInput-editor-col-60">
-                                    <el-select v-model="value" size="mini" placeholder="请选择">
-                                        <el-option
-                                            v-for="item in options"
-                                            :key="item.value"
-                                            :label="item.label"
-                                            :value="item.value">
-                                        </el-option>
-                                    </el-select>
-                                </div>
+                        <div class="group-form">
+                            <label class="form-label form-col-40">选择类型：</label>
+                            <div class="formInput-editor formInput-editor-col-60">
+                                <el-select v-model="value" size="mini" placeholder="请选择">
+                                    <el-option
+                                        v-for="item in options"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                    </el-option>
+                                </el-select>
                             </div>
                         </div>
                     </el-col>
 
                     <el-col :span="6">
-                        <div class="grid-content bg-purple">
-                            <div class="group-form">
-                                <label class="form-label">开始时间：</label>
-                                <div class="formInput-editor">
-                                    <el-form-item prop="time">
-                                        <el-date-picker
-                                            v-model="ruleForm.time"
-                                            type="date"
-                                            size="mini"
-                                            placeholder="选择日期">
-                                        </el-date-picker>
-                                    </el-form-item>
-                                </div>
+                        <div class="group-form">
+                            <label class="form-label">开始时间：</label>
+                            <div class="formInput-editor">
+                                <el-form-item prop="time">
+                                    <el-date-picker
+                                        v-model="ruleForm.time"
+                                        type="date"
+                                        size="mini"
+                                        placeholder="选择日期">
+                                    </el-date-picker>
+                                </el-form-item>
                             </div>
                         </div>
                     </el-col>
@@ -169,17 +159,14 @@
 
                 <el-row>
                     <el-col :span="24">
-                        <div class="grid-content bg-purple">
-                            <div class="text-area-box" style="height: 90px">
-                                <label class="form-label form-col-10 Height">备注：</label>
-                                <div class="text-area">
-                                    <textarea class="text-area-inner" v-model="ruleForm.area"> </textarea>
-                                </div>
+                        <div class="text-area-box" style="height: 90px">
+                            <label class="form-label form-col-10 Height">备注：</label>
+                            <div class="text-area">
+                                <textarea class="text-area-inner" v-model="ruleForm.area"> </textarea>
                             </div>
                         </div>
                     </el-col>
                 </el-row>
-
 
                 <el-row>
                     <p style="font-size: 13px;color: #676a6c;margin-bottom: 20px">复选按钮</p>
@@ -208,8 +195,6 @@
 </template>
 
 <script>
-    import detailPage from '../components/detailPage'
-
     export default {
         name: "test1",
         data() {
@@ -266,6 +251,9 @@
                     time: '',
                     area: ''
                 },
+                ruleFormAdd: {
+                    add: ''
+                },
                 rules: {
                     name: [
                         {required: true, message: '请输入组织内容', trigger: 'blur'},
@@ -288,7 +276,11 @@
                     time: [
                         {type: 'date', message: '请选择日期', trigger: 'blur'}
                     ],
-
+                },
+                ruleAdd: {
+                    add: [
+                        {required: true, message: '输入文字', trigger: 'blur'}
+                    ]
                 },
                 value: '',
                 date: '',
@@ -344,7 +336,32 @@
                     }
                 });
             },
-
+            newAdd(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        this.$confirm('确定要提交信息, 是否继续?', '提示', {
+                            confirmButtonText: '确定',
+                            cancelButtonText: '取消',
+                            iconClass: 'el-icon-question',
+                        }).then(() => {
+                            this.$message({
+                                showClose: true,
+                                type: 'success',
+                                message: '提交成功!'
+                            });
+                        }).catch(() => {
+                            this.$message({
+                                showClose: true,
+                                type: 'info',
+                                message: '已取消提交'
+                            });
+                        });
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
             success() {
                 this.$message({
                     showClose: true,
@@ -361,9 +378,7 @@
             }
 
         },
-        components: {
-            detailPage
-        }
+        components: {}
 
     }
 </script>

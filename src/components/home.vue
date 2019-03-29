@@ -445,7 +445,7 @@
 
             .menuColumn {
                 width: 100%;
-                height: 79vh;
+                height: calc(100vh - 130px);
                 overflow: auto;
             }
             .menuColumn::-webkit-scrollbar {
@@ -460,7 +460,6 @@
         .sideRight {
             width: 100%;
             min-width: 1136px;
-            overflow: auto;
             .header {
                 width: 100%;
                 height: auto;
@@ -607,7 +606,7 @@
                 width: 100%;
                 .childView {
                     width: 100%;
-                    height: 86.7vh;
+                    height: calc(92.4vh - 41px);
                     padding: 20px 15px 0 15px;
                     background-color: #e5e5e5;
                     overflow: auto;

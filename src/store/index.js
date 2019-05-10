@@ -8,6 +8,8 @@ let store = new Vuex.Store({
         selectValue: "",
         activeNav: [],
         editableTabs2: [],
+        replaceTabsValue: [],
+
     },
     getters: {},
     mutations: {
@@ -19,7 +21,6 @@ let store = new Vuex.Store({
         },
         deleteRoutePath(state, index) {
             store.state.activeNav.splice(index, 1);
-            console.log(store.state.activeNav)
         },
         emptyRoutePath() {
             store.state.activeNav = [];
@@ -29,7 +30,10 @@ let store = new Vuex.Store({
         },
         removeTabs(state, tabs) {
             store.state.editableTabs2 = tabs;
-            console.log(store.state.editableTabs2);
+        },
+        addReplaceTabsValue(state, obj) {
+           store.state.replaceTabsValue.push({key:obj.key,title:obj.title,route:obj.route});
+           console.log(store.state.replaceTabsValue);
         }
     },
     actions: {}

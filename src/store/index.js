@@ -1,42 +1,18 @@
 import Vue from 'vue'
-import Vuex from 'Vuex'
-
+import Vuex from 'vuex'
+// import getters from './getters'
 Vue.use(Vuex);
 
-let store = new Vuex.Store({
-    state: {
-        selectValue: "",
-        activeNav: [],
-        editableTabs2: [],
-        replaceTabsValue: [],
+const modulesFiles = require.context('./modules', false, /\.js$/);
 
-    },
-    getters: {},
-    mutations: {
-        changeTabsValue(state, value) {
-            store.state.selectValue = value;
-        },
-        addRoutePath(state, route) {
-            store.state.activeNav.push({path: route});
-        },
-        deleteRoutePath(state, index) {
-            store.state.activeNav.splice(index, 1);
-        },
-        emptyRoutePath() {
-            store.state.activeNav = [];
-        },
-        addTabs(state, tabs) {
-            store.state.editableTabs2 = tabs;
-        },
-        removeTabs(state, tabs) {
-            store.state.editableTabs2 = tabs;
-        },
-        addReplaceTabsValue(state, obj) {
-           store.state.replaceTabsValue.push({key:obj.key,title:obj.title,route:obj.route});
-           console.log(store.state.replaceTabsValue);
-        }
-    },
-    actions: {}
+const modules = modulesFiles.keys().reduce((modules, modulePath) => {
+  const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1');
+  const value = modulesFiles(modulePath);
+  modules[moduleName] = value.default;
+  return modules
+}, {});
+
+const store = new Vuex.Store({
+  modules
 });
 export default store
-

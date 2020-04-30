@@ -1,52 +1,26 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import vue from 'vue'
+import vueRouter from 'vue-router'
+import { vueRouterUtils } from 'castle-haozijunqaq-utils';
+vue.use(vueRouter);
+const originalReplace = vueRouter.prototype.replace
+vueRouter.prototype.replace = function (location) {
+    return originalReplace.call(this, location).catch(err => err)
+}
+const originalPush = vueRouter.prototype.push
+vueRouter.prototype.push = function (location) {
+    return originalPush.call(this, location).catch(err => err)
+}
+let routes = [
+    {
+        path: '/',
+        fullPath: '/',
+        redirect: '/Home'
+    },
+];
 
-let home = () => import('../components/home');
-let test1 = () => import('../view/editorPage');
-let table = () => import('../view/table');
-let organization = () => import('../view/organization');
-let detailPage = () => import('../components/detailPage')
-let userPermissionManagement = () => import('../view/userPermissionManagement');
-Vue.use(Router);
-
-export default new Router({
-    routes: [
-        {
-            path: '/',
-            redirect: '/home'
-
-        },
-        {
-            path: '/home',
-            name: 'home',
-            component: home,
-            children: [
-                {
-                    path: 'test1',
-                    name: 'test1',
-                    component: test1
-                },
-                {
-                    path: "table",
-                    name: 'test2',
-                    component: table
-                },
-                {
-                    path: "organization",
-                    name: "organization",
-                    component: organization
-                },
-                {
-                    path: "detailPage",
-                    name: "detailPage",
-                    component: detailPage
-                },
-                {
-                    path: "userPermissionManagement",
-                    name: "userPermissionManagement",
-                    component: userPermissionManagement
-                }
-            ]
-        }
-    ]
-})
+const router = new vueRouter({
+    routes:vueRouterUtils.compose(routes),
+    // // mode: 'history',
+    // base: process.env.BASE_URL,
+});
+export default router

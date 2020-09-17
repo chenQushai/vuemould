@@ -1,6 +1,5 @@
 import vue from 'vue'
 import vueRouter from 'vue-router'
-import { vueRouterUtils } from 'castle-haozijunqaq-utils';
 vue.use(vueRouter);
 const originalReplace = vueRouter.prototype.replace
 vueRouter.prototype.replace = function (location) {
@@ -14,12 +13,20 @@ let routes = [
     {
         path: '/',
         fullPath: '/',
-        redirect: '/Home'
+        redirect: '/home'
     },
+
+
+    {
+        path: '/home',
+        name: 'home',
+        component: () => import('../views/home.vue'),
+    },
+
 ];
 
 const router = new vueRouter({
-    routes:vueRouterUtils.compose(routes),
+    routes:routes,
     // // mode: 'history',
     // base: process.env.BASE_URL,
 });

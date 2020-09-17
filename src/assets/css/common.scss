@@ -1,0 +1,186 @@
+* ::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #ffffff;
+}
+
+* ::-webkit-scrollbar-thumb {
+  border-radius: inherit;
+  background-color: rgba(144, 147, 153, 0.5);
+}
+
+.page-container {
+  width: 100%;
+  background-color: white;
+}
+
+.container {
+  background-color: #ffffff;
+  min-width: 1440px;
+}
+
+.recipe-header {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  border-bottom: 2px solid rgb(64, 158, 255);
+  font-size: 30px;
+  font-weight: 600;
+}
+
+//表单盒子
+.form-box {
+  position: relative;
+  width: 100%;
+  background-color: white;
+  padding: 10px 10px 5px;
+  //overflow: auto;
+}
+
+//列表盒子
+.table-result-box {
+  padding: 10px;
+  border: 1px solid rgb(230, 230, 230);
+  background-color: #ffffff;
+}
+
+.table-box {
+  width: 100%;
+  background-color: white;
+  padding: 5px 10px 10px;
+}
+
+.table-collapse-box {
+  padding-left: 10px;
+  .table-inner-label {
+    display: inline-block;
+    width: 40%;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: right;
+  }
+  .font-content {
+    display: inline-block;
+    width: 56%;
+    margin-left: 8px;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: left;
+    word-break: break-all;
+  }
+}
+
+.table-collapse-box-font-left {
+  padding-left: 10px;
+  .table-inner-label {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: right;
+  }
+  .font-content {
+    display: inline-block;
+    width: 70%;
+    margin-left: 8px;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: left;
+  }
+}
+
+//分页框
+.pagination {
+  background: #ffffff;
+  overflow: auto;
+  padding: 5px 10px;
+  border: 1px solid #EBEEF5;
+  border-top: none;
+  border-bottom: none;
+}
+
+//输入框后年龄+选择框
+.el-world-6-age.el-col-6 {
+  .el-form-item {
+    width: 100%;
+  }
+  .el-form-item__label {
+    width: 44%;
+  }
+  .el-form-item__content {
+    width: 31%;
+  }
+}
+
+//固定下部的按钮容器
+.footer-btn-box { //配和store里的btnbox使用
+  position: fixed;
+  bottom: 10px;
+  z-index: 10;
+  text-align: right;
+  background-color: #ffffff;
+  padding: 5px 10px;
+  box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.16);
+}
+
+//标记显示
+.barge-content {
+  width: 100%;
+  text-align: right;
+  line-height: 15px;
+  .barge-item {
+    display: inline-block;
+    margin-left: 8px;
+    margin-right: 8px;
+    .barge-rect {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      vertical-align: middle;
+    }
+    .barge-des {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 400;
+      vertical-align: middle;
+    }
+  }
+}
+
+//出现在内容中的标题
+.tips-title {
+  font-size: 14px;
+  color: rgb(56, 155, 255);
+  font-weight: 500;
+}
+
+//用于表单前带复选框
+.el-col-item {
+  position: relative;
+}
+
+.check-box {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+//页面标题
+.head-title {
+  padding: 15px 5px 10px;
+  font-size: 16px;
+  height: 50px;
+  line-height: 30px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(206, 211, 221, 1);
+}
+
+//自定义分栏标签
+.divider-tag {
+  position: absolute;
+  font-size: 15px;
+  font-weight: bold;
+  left: 10px;
+  top: -10px;
+  background-color: white;
+  color: #1890FF;
+}

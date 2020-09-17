@@ -1,0 +1,415 @@
+{
+  "id": "1842459",
+  "name": "门诊工作站",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "14926462",
+      "name": "病例",
+      "font_class": "bingli1",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "14926463",
+      "name": "打印",
+      "font_class": "dayin1",
+      "unicode": "e642",
+      "unicode_decimal": 58946
+    },
+    {
+      "icon_id": "14926464",
+      "name": "打印1",
+      "font_class": "dayin11",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "14926465",
+      "name": "错误",
+      "font_class": "cuowu1",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "14926466",
+      "name": "报表打印",
+      "font_class": "baobiaodayin1",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "14926467",
+      "name": "处方管理1",
+      "font_class": "chufangguanli11",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "14926468",
+      "name": "报表打印1",
+      "font_class": "baobiaodayin11",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "14926469",
+      "name": "成功",
+      "font_class": "chenggong1",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "14926470",
+      "name": "个人中心",
+      "font_class": "gerenzhongxin1",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "14926471",
+      "name": "工作台1",
+      "font_class": "gongzuotai11",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "14926472",
+      "name": "个人中心1",
+      "font_class": "gerenzhongxin11",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "14926473",
+      "name": "警告",
+      "font_class": "jinggao1",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "14926474",
+      "name": "工作台",
+      "font_class": "gongzuotai2",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "14926475",
+      "name": "处方管理",
+      "font_class": "chufangguanli2",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "14926476",
+      "name": "护士",
+      "font_class": "hushi1",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "14926477",
+      "name": "内科",
+      "font_class": "neike1",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "14926478",
+      "name": "库存管理",
+      "font_class": "kucunguanli2",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "14926479",
+      "name": "护士1",
+      "font_class": "hushi11",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "14926480",
+      "name": "库存管理1",
+      "font_class": "kucunguanli11",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "14926481",
+      "name": "病例1",
+      "font_class": "bingli11",
+      "unicode": "e654",
+      "unicode_decimal": 58964
+    },
+    {
+      "icon_id": "14926482",
+      "name": "密码",
+      "font_class": "mima1",
+      "unicode": "e655",
+      "unicode_decimal": 58965
+    },
+    {
+      "icon_id": "14926483",
+      "name": "权威1",
+      "font_class": "quanwei1",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "14926484",
+      "name": "权威",
+      "font_class": "quanwei2",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "14926485",
+      "name": "删除",
+      "font_class": "shanchu1",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "14926486",
+      "name": "删除1",
+      "font_class": "shanchu11",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "14926487",
+      "name": "切换",
+      "font_class": "qiehuan1",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "14926488",
+      "name": "设置",
+      "font_class": "shezhi1",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "14926489",
+      "name": "搜索1",
+      "font_class": "sousuo1",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "14926490",
+      "name": "内科1",
+      "font_class": "neike11",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    },
+    {
+      "icon_id": "14926491",
+      "name": "外科1",
+      "font_class": "waike1",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
+      "icon_id": "14926492",
+      "name": "统计",
+      "font_class": "tongji1",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "14926493",
+      "name": "搜索",
+      "font_class": "sousuo2",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "14926494",
+      "name": "统计1",
+      "font_class": "tongji11",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "14926495",
+      "name": "通知1",
+      "font_class": "tongzhi1",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "14926496",
+      "name": "外科",
+      "font_class": "waike2",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    },
+    {
+      "icon_id": "14926497",
+      "name": "时间",
+      "font_class": "shijian1",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "14926498",
+      "name": "消息1",
+      "font_class": "xiaoxi1",
+      "unicode": "e665",
+      "unicode_decimal": 58981
+    },
+    {
+      "icon_id": "14926499",
+      "name": "信息查询",
+      "font_class": "xinxichaxun2",
+      "unicode": "e666",
+      "unicode_decimal": 58982
+    },
+    {
+      "icon_id": "14926500",
+      "name": "设置1",
+      "font_class": "shezhi11",
+      "unicode": "e667",
+      "unicode_decimal": 58983
+    },
+    {
+      "icon_id": "14926501",
+      "name": "信息",
+      "font_class": "xinxi1",
+      "unicode": "e668",
+      "unicode_decimal": 58984
+    },
+    {
+      "icon_id": "14926502",
+      "name": "下拉",
+      "font_class": "xiala2",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "14926503",
+      "name": "退出",
+      "font_class": "tuichu1",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
+      "icon_id": "14926504",
+      "name": "消息",
+      "font_class": "xiaoxi2",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
+      "icon_id": "14926505",
+      "name": "未收费",
+      "font_class": "weishoufei1",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "14926506",
+      "name": "日期",
+      "font_class": "riqi1",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "14926507",
+      "name": "药品管理1",
+      "font_class": "yaopinguanli11",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "14926508",
+      "name": "信息查询1",
+      "font_class": "xinxichaxun11",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "14926509",
+      "name": "药房1",
+      "font_class": "yaofang1",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
+      "icon_id": "14926510",
+      "name": "药品管理",
+      "font_class": "yaopinguanli2",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "14926511",
+      "name": "下拉1",
+      "font_class": "xiala11",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "14926512",
+      "name": "中药",
+      "font_class": "zhongyao1",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "14926513",
+      "name": "用户",
+      "font_class": "yonghu1",
+      "unicode": "e674",
+      "unicode_decimal": 58996
+    },
+    {
+      "icon_id": "14926514",
+      "name": "中药1",
+      "font_class": "zhongyao11",
+      "unicode": "e675",
+      "unicode_decimal": 58997
+    },
+    {
+      "icon_id": "14926515",
+      "name": "医生1",
+      "font_class": "yisheng1",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "14926516",
+      "name": "通知",
+      "font_class": "tongzhi2",
+      "unicode": "e677",
+      "unicode_decimal": 58999
+    },
+    {
+      "icon_id": "14926517",
+      "name": "药房",
+      "font_class": "yaofang2",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "14926518",
+      "name": "协定处方",
+      "font_class": "xiedingchufang1",
+      "unicode": "e679",
+      "unicode_decimal": 59001
+    },
+    {
+      "icon_id": "14926519",
+      "name": "医生",
+      "font_class": "yisheng2",
+      "unicode": "e67a",
+      "unicode_decimal": 59002
+    }
+  ]
+}

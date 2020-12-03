@@ -20,18 +20,62 @@
             </div>
         </el-header>
         <el-container>
-            <el-aside width="148px" class="aside">
+            <el-aside :width="computeMenuWidth" class="aside">
 
-                <div class="out-box"
-                     @click="addTab('menuItem',m)"
-                     :class="m.select ? 'select' : ''"
-                     :key="index" v-for="(m,index) in menuData">
-                    <div class="inner-menu " :class="m.select ? 'select-bg' : ''">
-                        <div class="menu-icon"
-                             :style="{backgroundImage:`url(${m.icon})`,backgroundSize: '36px 36px'}"></div>
-                        <p class="menu-name">{{m.menuName}}</p>
+                <el-menu
+                        router
+                        unique-opened
+                        :default-active="defaultActive"
+                        class="el-menu-vertical-demo"
+                        background-color="#ffffff"
+                        text-color="#545c64"
+                        :collapse="iscollapse"
+                        @select="addTab"
+                >
+                    <div v-for="(item,index) in menuData" :key="index">
+                        <el-submenu :index="item.url" v-if="item.children.length > 0">
+                            <template slot="title">
+                                <i :class="item.icon"></i>
+                                <span slot="title" v-if="!iscollapse">{{item.menuName}}</span>
+                            </template>
+                            <div :key="i" v-for="(child,i) in item.children">
+                                <el-submenu :index="child.url" v-if="child.children.length > 0">
+                                    <template slot="title">{{child.menuName}}</template>
+                                    <div v-for="(third,i) in child.children">
+                                        <el-submenu :index="third.url" v-if="third.children.length > 0">
+                                            <template slot="title">{{third.menuName}}</template>
+                                            <div v-for="(fourth,i) in third.children">
+                                                <el-menu-item :index="fourth.url"
+                                                              v-if="fourth.children.length === 0">
+                                                    {{fourth.menuName}}
+                                                </el-menu-item>
+                                            </div>
+                                        </el-submenu>
+
+                                        <el-menu-item :index="third.url" :key="i"
+                                                      v-if="third.children.length === 0">
+                                            {{third.menuName}}
+                                            <i v-if="third.focused" class="el-icon-star-on margin-left10"
+                                               style="font-size: 14px"></i>
+                                            <i v-else class="el-icon-star-off margin-left10"
+                                               style="font-size: 14px"></i>
+                                        </el-menu-item>
+                                    </div>
+
+                                </el-submenu>
+
+                                <el-menu-item :index="child.url" :key="i" v-if="child.children.length === 0">
+                                    {{child.menuName}}
+                                </el-menu-item>
+                            </div>
+                        </el-submenu>
+
+                        <el-menu-item :index="item.url" v-if="item.children.length === 0">
+                            <i :class="item.icon"></i>
+                            <span slot="title">{{item.menuName}}</span>
+                        </el-menu-item>
                     </div>
-                </div>
+                </el-menu>
             </el-aside>
             <el-main>
                 <div class="tabs-title">
@@ -50,7 +94,8 @@
                             </el-tabs>
                         </div>
                     </div>
-
+                    <i :class="iscollapse ? 'el-icon-arrow-right': 'el-icon-arrow-left'" @click="showCollapse"
+                       :style="collapseStyle"></i>
                 </div>
 
                 <div class="router-view">
@@ -72,8 +117,211 @@
                 createName: '',
                 keyNow: '',
                 ItemTabsValue: '',
-                itemTabs: [],//tabs栏目
-                menuData: [],
+                defaultActive: '/home/index',//当前激活菜单
+                iscollapse: false,
+                collapseStyle: {
+                    position: 'absolute',
+                    top: '10px',
+                    left: '2px',
+                    cursor: 'pointer',
+                    transition: 'all 1s'
+                },
+                itemTabs: [
+                    {
+                        title: '首页',
+                        name: '/home'
+                    }
+                ],//tabs栏目
+                menuData: [
+                    {
+                        icon: ['iconfont', 'iconchufangguanli2', 'menu-iconfont'],
+                        menuName: '字典维护',
+                        url: '2',
+                        children: [
+                            {
+                                menuName: '字典编码维护',
+                                url: '/home/dictionaryCode',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '住院编码维护',
+                                url: '/home/inHospitalCode',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '药品用法附加收费',
+                                url: '/home/drugAdditionalCost',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '组合项目设置',
+                                url: '/home/compoundProject',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '疾病编码维护',
+                                url: '/home/diseaseCode',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '手术编码维护',
+                                url: '/home/operationCode',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '医技科室药房设置',
+                                url: '/home/medicalDepartment',
+                                focused: false,
+                                children: []
+                            },
+                        ]
+                    },
+                    {
+                        icon: ['iconfont', 'iconyaopinguanli2', 'menu-iconfont'],
+                        menuName: '参数设置',
+                        url: '3',
+                        children: [
+                            {
+                                menuName: '库位设置',
+                                url: '3-1',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '添加库位',
+                                url: '/home/addStorage',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '病区管理',
+                                url: '/home/wardManage',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '病区兼管设置',
+                                url: '/home/wardRegulation',
+                                focused: false,
+                                children: []
+                            }
+                        ]
+                    },
+                    {
+                        icon: ['iconfont', 'iconkucunguanli2', 'menu-iconfont'],
+                        menuName: '用户管理',
+                        url: '4',
+                        children: [
+                            {
+                                menuName: '操作员管理',
+                                url: '/home/operator',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '操作员组管理',
+                                url: '/home/operatorGroup',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '职称对应权限维护',
+                                url: '4-3',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '签名图片录入维护',
+                                url: '4-5',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '医生权限管理',
+                                url: '/home/doctorPermission',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '医生病区调动',
+                                url: '/home/doctorWardMove',
+                                focused: false,
+                                children: []
+                            },
+                            {
+                                menuName: '抗生素级别设置',
+                                url: '/home/antibioticGrade',
+                                focused: false,
+                                children: []
+                            },
+                        ]
+                    },
+                    {
+                        icon: ['iconfont', 'iconxinxichaxun2', 'menu-iconfont'],
+                        menuName: '常用工具',
+                        url: '5',
+                        children: [
+                            {
+                                menuName: '病人总账检测',
+                                url: '/home/patientLedgerTest',
+                                children: []
+                            },
+                            {
+                                menuName: '数据库表结构升级',
+                                url: '/home/tableStructureUp',
+                                children: []
+                            },
+                            {
+                                menuName: '全局解锁处理',
+                                url: '/home/globalUnlock',
+                                children: []
+                            },
+                            {
+                                menuName: '常用字典信息管理',
+                                url: '/home/commonlyUsedDictionary',
+                                children: []
+                            },
+                            {
+                                menuName: 'RvEdit配置工具',
+                                url: '/home/rvEditSet',
+                                children: []
+                            },
+                            {
+                                menuName: '病历文书模板维护',
+                                url: '5-6',
+                                children: []
+                            },
+                        ]
+                    },
+                    {
+                        icon: ['iconfont', 'icontongji1', 'menu-iconfont'],
+                        menuName: '系统日志',
+                        url: '6',
+                        children: [
+                            {
+                                menuName: '操作日志查询',
+                                url: '/home/operationLog',
+                                children: []
+                            },
+                            {
+                                menuName: '修改配置日志',
+                                url: '/home/changeConfigLog',
+                                children: []
+                            },
+                            {
+                                menuName: '用户登录日志',
+                                url: '/home/userLoginLog',
+                                children: []
+                            },
+                        ]
+                    }
+                ],
             }
         },
         created() {
@@ -82,7 +330,7 @@
 
         },
         methods: {
-
+            //需自行根据业务修改
             addTab(type, target) { //type 跳转类型,target为点击的对象
                 if (type === 'projectItem') {
                     const isInclude = this.itemTabs.some((item) => {
@@ -127,7 +375,7 @@
                     this.$router.push(target.path)
                 }
             },
-
+            //需自行根据业务修改
             tabClick(tab) {
                 let path = "";
                 let p = {};
@@ -150,7 +398,7 @@
                 }
                 this.ItemTabsValue = tab.name;
             },
-
+            //需自行根据业务修改
             removeTab(targetName) {//target为将要删除的item的name
                 if (targetName === this.itemTabs[0].name) { //选项卡 第一个不能删除
                     this.$message({
@@ -201,8 +449,17 @@
                     window.location.href = `#${page.path}?itemId=${page.itemMsg.ITEM_ID}&createTime=${page.itemMsg.CREATE_DT}&lastChanceTime=${page.itemMsg.MODIFY_DT}`;
                 }
 
-            }
-        }
+            },
+            showCollapse() {
+                this.iscollapse = !this.iscollapse;
+            },
+        },
+        computed: {
+            //计算菜单宽度
+            computeMenuWidth() {
+                return this.iscollapse ? '63px' : '210px'
+            },
+        },
     }
 </script>
 
@@ -258,25 +515,13 @@
     }
 
     .tabs-title {
+        position: relative;
+        padding: 0 20px;
         height: 40px;
         /deep/ .el-tabs__header {
             margin: 0;
         }
-        /*.back-btn {*/
-        /*float: left;*/
-        /*width: 95px;*/
-        /*height: 40px;*/
-        /*text-align: center;*/
-        /*cursor: pointer;*/
-        /*.font {*/
-        /*display: inline-block;*/
-        /*vertical-align: center;*/
-        /*margin-right: 10px;*/
-        /*font-size: 14px;*/
-        /*line-height: 40px;*/
-        /*}*/
 
-        /*}*/
         .option-box {
             float: left;
             width: 100%;
@@ -295,44 +540,9 @@
 
     .aside {
         box-shadow: 1px 0px 3px rgba(25, 41, 63, 0.1);
-        padding: 16px 10px;
         overflow: auto;
-        .out-box {
-            width: 136px;
-            height: 104px;
-            padding: 6px;
-            margin-bottom: 2px;
-            .inner-menu {
-                width: 115px;
-                height: 90px;
-                background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(236, 246, 255, 1) 100%);
-                box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
-                overflow: auto;
-                cursor: pointer;
-                .menu-icon {
-                    width: 36px;
-                    height: 36px;
-                    margin: 15px auto;
-                }
-                .menu-name {
-                    font-size: 16px;
-                    line-height: 16px;
-                    letter-spacing: 2px;
-                    text-align: center;
-                    font-weight: 500;
-                }
-
-            }
-            .select-bg {
-                background: rgba(0, 0, 0, 0);
-                box-shadow: none;
-            }
-        }
-
-        .select {
-            background-image: url("../assets/img/menu/menuBg.png");
-            background-size: 136px 104px;
-
+        .el-menu {
+            border-right: none;
         }
     }
 

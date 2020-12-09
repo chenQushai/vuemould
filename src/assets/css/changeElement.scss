@@ -35,6 +35,13 @@
   margin-bottom: 10px !important;
 }
 
+//必填时的间距
+.required-item {
+  /deep/ .el-form-item--mini.el-form-item {
+    margin-bottom: 15px !important;
+  }
+}
+
 .el-form-item--mini .el-form-item__label {
   line-height: 32px !important;
 }

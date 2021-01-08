@@ -70,9 +70,50 @@ let getComputerTime = () => {
         hours = `0${hours}`
     }
     return `${years}-${month}-${day} ${hours}:${min}:${seconds}`
+};
+//验证英文下划线，数字
+let checkCode = (str) => {
+    var reg = /^[0-9a-zA-Z_]{1,}$/;
+    return reg.test(str)
 }
+//处理表格数据
+let handlerTable = (data, tableData) => {
+    if (data) { //传了参数才处理
+        let key = Object.keys(data);
+        if (key.length !== 0) { //说明无需修改值
+            key.forEach((item) => {
+                tableData.forEach((t) => {
+                    t[item] = data[item][t[item]] //将数据值和枚举的值进行对应
+                })
+            })
+        }
+    }
+    return tableData
+};
 
 
+//文件判断实体
+
+let checkFile = (file) => {
+    let result = {
+        code: 0,
+        message: ''
+    };
+    let filesEnd = file.name.split('.');
+    if (filesEnd[filesEnd.length - 1] !== 'xlsx' && filesEnd[filesEnd.length - 1] !== 'xls' ) {
+        result.code = -1;
+        result.message = '请上传xlsx,xls的excel文件';
+        return result
+    }
+
+    if (file.size > 134217728) {
+        result.code = -1;
+        result.message = '请上传文件大小小于128MB';
+        return result
+    }
+
+    return result;
+};
 export
 {
     checkString,
@@ -83,4 +124,7 @@ export
     checkNum,
     getToday,
     getComputerTime,
+    handlerTable,
+    checkCode,
+    checkFile
 }

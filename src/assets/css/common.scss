@@ -97,3 +97,19 @@ a {
   color: #1890FF;
 }
 
+//标题分栏
+.title {
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px;
+  border-bottom: 1px solid #D6DEED;
+  .tag {
+    display: inline-block;
+    width: 6px;
+    border-radius: 2px;
+    height: 18px;
+    vertical-align: middle;
+    background-color: #409EFF;
+  }
+}
+

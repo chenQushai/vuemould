@@ -1,4 +1,4 @@
-.font-align-both {
+el-world-8.font-align-both {
   text-align: justify;
   text-align-last: justify;
 }
@@ -198,6 +198,18 @@
   }
 }
 
+.el-world-4.el-col-16 {
+  .el-form-item {
+    width: 100%;
+  }
+  .el-form-item__label {
+    width: 12.2%;
+  }
+  .el-form-item__content {
+    width: 87.8%;
+  }
+}
+
 .el-world-6.el-col-18 {
   .el-form-item {
     width: 100%;
@@ -207,6 +219,18 @@
   }
   .el-form-item__content {
     width: 85.7%;
+  }
+}
+
+.el-world-4.el-col-24 {
+  .el-form-item {
+    width: 100%;
+  }
+  .el-form-item__label {
+    width: 7.4%;
+  }
+  .el-form-item__content {
+    width: 92.6%;
   }
 }
 
@@ -245,12 +269,21 @@
 
 //修改表格样式
 .el-table .cell {
-  //white-space: nowrap !important;
-  //text-overflow: ellipsis !important;
-  //overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
   .el-date-editor.el-input, .el-date-editor.el-input__inner {
     width: 100%;
   }
+
+}
+
+.el-table .cell, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell {
+  padding-left: 19px;
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover > td {
+  background: #E6F7FF;
 }
 
 .el-table td, .el-table th {

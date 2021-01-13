@@ -29,11 +29,8 @@ let getCurrentMothLastDay = (years, moth) => {
     return `${lastDay.getFullYear()}-${moth}-${lastDay.getDate()}`
 };
 let checkNum = (value) => {
-    if (parseFloat(value).toString() == "NaN") {
-        return false;
-    } else {
-        return true;
-    }
+    var reg = /^[0-9]*$/;
+    return reg.test(value);
 };
 let getToday = () => {
     let day = new Date();

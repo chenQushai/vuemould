@@ -44,7 +44,7 @@ const pop = (el) => {
         let scrollTop = 0;
         let parentNode = '';
         //滚动事件
-        const scrollFun =  () =>{
+        const scrollFun = () => {
             node.style.top = `${Math.ceil(el.getBoundingClientRect().y)}px`;
         };
 
@@ -57,20 +57,86 @@ const pop = (el) => {
             else {
                 scrollTop = parent.scrollTop;
                 parentNode = parent;
-                parentNode.addEventListener('scroll',scrollFun)
+                parentNode.addEventListener('scroll', scrollFun)
             }
         };
         getParentScrollTop(el);
         setTimeout(() => {
             if (parentNode) {
-                parentNode.removeEventListener('scroll',scrollFun)
+                parentNode.removeEventListener('scroll', scrollFun)
             }
             parent.removeChild(node)
-        },1500)
+        }, 1500)
     });
 };
+const waterMark = {
+    inserted(el, binding) {
+        const defaultMark = {
+            text: '水印内容',
+            angle: 25,
+            color: 'rgba(0,0,0,.15)',
+            fontSize: '16px',
+        };
+        Object.assign(defaultMark, binding.value);
+        //将旋转度数改成负数
+        defaultMark.angle = -Math.abs(defaultMark.angle);
+        //随机生成id
+        const id = Math.random();
+        let prevDivId = null;
+        prevDivId = id;
+        const canvas = document.createElement('canvas');
+        canvas.width = 240;
+        canvas.height = 180;
+        const pen = canvas.getContext('2d');
+        pen.rotate((defaultMark.angle * Math.PI) / 180);
+        pen.font = `${defaultMark.fontSize}微软雅黑`;
+        pen.fillStyle = defaultMark.color;
+        pen.textAlign = 'left';
+        pen.textBaseline = 'middle';
+        pen.fillText(defaultMark.text, 0, canvas.height);
+
+        const div = document.createElement('div');
+        div.id = prevDivId;
+        div.style.pointerEvents = 'none';
+        div.style.position = 'absolute';
+        div.style.top = `${el.getBoundingClientRect().top}px`;
+        div.style.left = `${el.getBoundingClientRect().left}px`;
+        div.style.zIndex = '9999';
+        div.style.width = window.getComputedStyle(el).width;
+        div.style.height = window.getComputedStyle(el).height;
+        div.style.background = 'url(' + canvas.toDataURL('image/png') + ') left top repeat';
+        el.appendChild(div);
+    }
+};
+
+const lazyModules = {
+    inserted: (el, binding, vnode) => {
+        el.style.position = 'relative';
+        let clientHeight = el.clientHeight;
+        let childModules = el.childNodes;
+        let hasInView = [];
+        //检查进入可视区
+        let isIntoView = () => {
+            for (let i = 0; i < childModules.length; i++) {
+                let scrollTop = el.scrollTop;
+                if ((childModules[i].offsetTop - scrollTop) < clientHeight) {
+                    if (!hasInView.includes(i)) { //不包含再添加
+                        hasInView.push(i);
+                        binding.value(i,childModules[i],hasInView)
+                    }
+                }
+            }
+        };
+        isIntoView();
+        el.addEventListener('scroll', () => {
+            isIntoView()
+        });
+    }
+}
 
 export default {
     drag,
-    pop
+    pop,
+    waterMark,
+    lazyModules
 }

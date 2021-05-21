@@ -275,15 +275,29 @@ el-world-8.font-align-both {
   .el-date-editor.el-input, .el-date-editor.el-input__inner {
     width: 100%;
   }
+}
 
+
+
+
+//斑马纹样式
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+  background: #F0F7FF;
 }
 
 .el-table .cell, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell {
   padding-left: 19px;
 }
 
+//hover到表格样式
+
 .el-table--enable-row-hover .el-table__body tr:hover > td {
-  background: #E6F7FF;
+  background: #D6EAFF;
+}
+
+//hover到表格样式
+.el-table__body tr.hover-row.el-table__row--striped.current-row > td, .el-table__body tr.hover-row.el-table__row--striped > td, .el-table__body tr.hover-row > td {
+  background-color: #D6EAFF
 }
 
 .el-table td, .el-table th {
@@ -316,17 +330,26 @@ el-world-8.font-align-both {
 
 .table-height-current {
   //表格选中高亮行颜色
-  .el-table--striped .el-table__body tr.el-table__row--striped.current-row td {
-    background-color: #409EFF;
+  .el-table__body tr.current-row > td {
+    background-color: #007AFF !important;
     color: white;
-    pointer-events: none;
+    //pointer-events: none;
+    //选中的操作栏字体样式
+    .active-main {
+      color: white;
+    }
   }
 
-  .el-table__body tr.current-row > td {
-    background-color: #409EFF;
+  .el-table--striped .el-table__body tr.el-table__row--striped.current-row td {
+    background-color: #007AFF !important;
     color: white;
-    pointer-events: none;
+    //pointer-events: none;
+    //选中的操作栏字体样式
+    .active-main {
+      color: white;
+    }
   }
+
 }
 
 //修改左菜单自定义icon样式
@@ -355,6 +378,9 @@ el-world-8.font-align-both {
 
   .el-tabs--card > .el-tabs__header {
     border: none;
+  }
+  .el-tabs__item.is-active {
+    background-color: rgb(240, 247, 255);
   }
 
   .el-tabs--card > .el-tabs__header .el-tabs__nav {
@@ -434,8 +460,8 @@ el-world-8.font-align-both {
 
 //修改左菜单样式
 .el-menu-item.is-active {
-  background-color: rgb(69, 155, 255) !important;
-  color: #ffffff !important;
+  background-color: #E0EFFF !important;
+  color: #1890FF !important;
 }
 
 //修改dialog样式
@@ -487,6 +513,18 @@ el-world-8.font-align-both {
   border-color: #879bba;
 }
 
+//修改树形样式
+//树形hover
+.el-tree-node__content:hover {
+  background: #D6EAFF;
+}
+
+//树形选中样式
+.el-tree-node:focus > .el-tree-node__content {
+  background: transparent;
+  color: #007AFF;
+}
+
 //修改选中树样式
 .select-tree-bg-blue {
   .el-tree {
@@ -507,3 +545,20 @@ el-world-8.font-align-both {
     }
   }
 }
+
+//修改单选框样式
+.el-radio {
+  margin-right: 24px;
+}
+
+//修改下拉框样式
+.el-select-dropdown__item.hover, .el-select-dropdown__item:hover {
+  background-color: #D6EAFF;
+}
+
+.el-select-dropdown__item.selected {
+  background-color: #A6D1FF;
+  color: #595959;
+}
+
+

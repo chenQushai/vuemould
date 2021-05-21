@@ -1,13 +1,15 @@
+import Vue from 'vue'
+
 let checkString = (val) => {
     let pattern = new RegExp("[^a-zA-Z0-9\_\u4e00-\u9fa5]", "i");
     return pattern.test(val)
 };
 let checkAccNo = (val) => {
-    let accNO = /^[0-9A-Z]{1,20}$/;//账号
+    let accNO = /^[0-9A-Za-z]{1,}$/;//账号
     return accNO.test(val)
 };
 let checkMoney = (val) => {
-    if (val === '') {
+    if (!val) {
         return true
     }
     let money = /^([1-9][\d]{0,9}|0)(\.[\d]{1,2})?$/;
@@ -73,31 +75,17 @@ let checkCode = (str) => {
     var reg = /^[0-9a-zA-Z_]{1,}$/;
     return reg.test(str)
 }
-//处理表格数据
-let handlerTable = (data, tableData) => {
-    if (data) { //传了参数才处理
-        let key = Object.keys(data);
-        if (key.length !== 0) { //说明无需修改值
-            key.forEach((item) => {
-                tableData.forEach((t) => {
-                    t[item] = data[item][t[item]] //将数据值和枚举的值进行对应
-                })
-            })
-        }
-    }
-    return tableData
-};
+
 
 
 //文件判断实体
-
 let checkFile = (file) => {
     let result = {
         code: 0,
         message: ''
     };
     let filesEnd = file.name.split('.');
-    if (filesEnd[filesEnd.length - 1] !== 'xlsx' && filesEnd[filesEnd.length - 1] !== 'xls' ) {
+    if (filesEnd[filesEnd.length - 1] !== 'xlsx' && filesEnd[filesEnd.length - 1] !== 'xls') {
         result.code = -1;
         result.message = '请上传xlsx,xls的excel文件';
         return result
@@ -111,6 +99,27 @@ let checkFile = (file) => {
 
     return result;
 };
+
+//计算年龄
+let getAge = (birth) => {
+    if (birth) {
+        let birthdays = new Date(birth.replace(/-/g, "/"));
+        let d = new Date();
+        let age =
+            d.getFullYear() -
+            birthdays.getFullYear() -
+            (d.getMonth() < birthdays.getMonth() ||
+            (d.getMonth() == birthdays.getMonth() &&
+                d.getDate() < birthdays.getDate())
+                ? 1
+                : 0);
+        return age;
+    }
+};
+
+
+
+
 export
 {
     checkString,
@@ -121,7 +130,7 @@ export
     checkNum,
     getToday,
     getComputerTime,
-    handlerTable,
     checkCode,
-    checkFile
+    checkFile,
+    getAge,
 }

@@ -13,8 +13,8 @@ import directives from './assets/js/directives'
 for (let key  in directives) {
   Vue.directive(key,directives[key])
 }
-Vue.use(vuePlugin)
-Vue.use(ElementUI)
+Vue.use(vuePlugin);
+Vue.use(ElementUI);
 Vue.config.productionTip = false;
 
 new Vue({

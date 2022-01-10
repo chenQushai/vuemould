@@ -17,6 +17,7 @@ a {
 
 .container {
   background-color: #ffffff;
+  padding: 8px 12px;
 }
 
 .content {
@@ -55,8 +56,7 @@ a {
 .pagination {
   background: #ffffff;
   overflow: auto;
-  padding: 5px 10px;
-  border: 1px solid #EBEEF5;
+  padding: 5px 0px;
   border-top: none;
   border-bottom: none;
 }
@@ -91,25 +91,76 @@ a {
   position: absolute;
   font-size: 15px;
   font-weight: bold;
-  left: 10px;
+  left: 16px;
   top: -10px;
   background-color: white;
   color: #1890FF;
 }
 
-//标题分栏
-.title {
-  font-weight: bold;
-  font-size: 14px;
-  padding: 10px;
-  border-bottom: 1px solid #D6DEED;
-  .tag {
-    display: inline-block;
-    width: 6px;
-    border-radius: 2px;
-    height: 18px;
-    vertical-align: middle;
-    background-color: #409EFF;
+//线框朴素表格
+//栅格
+.row-list {
+  display: flex;
+  border-top: 1px solid #BFDEFF;
+  .col-item {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #BFDEFF;
+    padding: 5px;
+    min-height: 32px;
+    align-items: flex-end;
+    &:nth-of-type(2n) {
+      align-items: flex-start;
+      justify-content: center;
+      color: #595959;
+      padding: 0 0 0 16px;
+    }
+    //奇数行样式
+    &:nth-of-type(2n + 1) {
+      color: #262626;
+      background-color: #E0EFFF;
+      font-weight: bold;
+      align-items: center;
+    }
+    .cell {
+      flex: 1;
+      //display: flex;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+    &:last-child {
+      border-right: 1px solid #BFDEFF;
+    }
+  }
+  &:last-child {
+    border-bottom: 1px solid #BFDEFF;
   }
 }
 
+//栅格
+//查看详情
+.detail-list {
+  margin-bottom: 8px;
+  .detail-label {
+    font-size: 14px;
+    font-weight: 400;
+    color: #262626;
+    margin-right: 8px;
+  }
+  .detail-value {
+    font-size: 14px;
+    color: #595959;
+    font-weight: 400;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+  .detail-picture {
+    display: inline-block;
+    width: 223px;
+    height: 120px;
+    background: #F5F5F5;
+    border-radius: 4px;
+    border: 1px solid #D9D9D9;
+    vertical-align: top;
+  }
+}

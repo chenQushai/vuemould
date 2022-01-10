@@ -1,23 +1,35 @@
-import Vue from 'vue'
+import Vue from "vue";
 
 let checkString = (val) => {
-    let pattern = new RegExp("[^a-zA-Z0-9\_\u4e00-\u9fa5]", "i");
-    return pattern.test(val)
+    let pattern = new RegExp("[^a-zA-Z0-9_\u4e00-\u9fa5]", "i");
+    return pattern.test(val);
 };
 let checkAccNo = (val) => {
-    let accNO = /^[0-9A-Za-z]{1,}$/;//账号
-    return accNO.test(val)
+    let accNO = /^[0-9A-Za-z]{1,}$/; //账号
+    return accNO.test(val);
 };
 let checkMoney = (val) => {
     if (!val) {
-        return true
+        return true;
     }
     let money = /^([1-9][\d]{0,9}|0)(\.[\d]{1,2})?$/;
-    return money.test(val)
+    return money.test(val);
 };
-let checkPercentage = (val) => {
-    if (val === '') {
+
+let contactPhone = (val) => {
+    if (!val) {
         return true
+    }
+    //手机号
+    const mobilePhone = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0-9])|(19[0-9]))\d{8}$/;
+    //国内座机
+    const telephone = /\d{3}-\d{8}|\d{4}-\d{7}|\d{8}/;
+    return mobilePhone.test(val) || telephone.test(val);
+};
+
+let checkPercentage = (val) => {
+    if (val === "") {
+        return true;
     }
     let percentage = /^\d*\.?\d*\%$/;
     return percentage.test(val);
@@ -28,7 +40,7 @@ let getCurrentMothLastDay = (years, moth) => {
     let oneDay = 1000 * 60 * 60 * 24;
     let lastDay = new Date(nextMothDay - oneDay);
     let month = lastDay.getMonth() + 1;
-    return `${lastDay.getFullYear()}-${moth}-${lastDay.getDate()}`
+    return `${lastDay.getFullYear()}-${moth}-${lastDay.getDate()}`;
 };
 let checkNum = (value) => {
     var reg = /^[0-9]*$/;
@@ -40,16 +52,14 @@ let getToday = () => {
     let month = null;
     let today = null;
     if (day.getMonth() + 1 < 10) {
-        month = '0' + (day.getMonth() + 1)
-    }
-    else {
-        month = day.getMonth() + 1
+        month = "0" + (day.getMonth() + 1);
+    } else {
+        month = day.getMonth() + 1;
     }
     if (day.getDate() < 10) {
-        today = '0' + day.getDate();
-    }
-    else {
-        today = day.getDate()
+        today = "0" + day.getDate();
+    } else {
+        today = day.getDate();
     }
     return day.getFullYear() + "-" + month + "-" + today;
 };
@@ -63,41 +73,63 @@ let getComputerTime = () => {
     let min = date.getMinutes();
     let seconds = date.getSeconds();
     if (seconds < 10) {
-        seconds = `0${seconds}`
+        seconds = `0${seconds}`;
     }
     if (hours < 10) {
-        hours = `0${hours}`
+        hours = `0${hours}`;
     }
-    return `${years}-${month}-${day} ${hours}:${min}:${seconds}`
+    return `${years}-${month}-${day} ${hours}:${min}:${seconds}`;
 };
 //验证英文下划线，数字
 let checkCode = (str) => {
     var reg = /^[0-9a-zA-Z_]{1,}$/;
-    return reg.test(str)
-}
-
-
+    return reg.test(str);
+};
+//处理表格数据
+let handlerTable = (data, tableData) => {
+    if (data) {
+        //传了参数才处理
+        let key = Object.keys(data);
+        if (key.length !== 0) {
+            //说明无需修改值
+            key.forEach((item) => {
+                tableData.forEach((t) => {
+                    t[item] = data[item][t[item]]; //将数据值和枚举的值进行对应
+                });
+            });
+        }
+    }
+    return tableData;
+};
 
 //文件判断实体
 let checkFile = (file) => {
     let result = {
         code: 0,
-        message: ''
+        message: "",
     };
-    let filesEnd = file.name.split('.');
-    if (filesEnd[filesEnd.length - 1] !== 'xlsx' && filesEnd[filesEnd.length - 1] !== 'xls') {
+    let filesEnd = file.name.split(".");
+    if (
+        filesEnd[filesEnd.length - 1] !== "xlsx" &&
+        filesEnd[filesEnd.length - 1] !== "xls"
+    ) {
         result.code = -1;
-        result.message = '请上传xlsx,xls的excel文件';
-        return result
+        result.message = "请上传xlsx,xls的excel文件";
+        return result;
     }
 
     if (file.size > 134217728) {
         result.code = -1;
-        result.message = '请上传文件大小小于128MB';
-        return result
+        result.message = "请上传文件大小小于128MB";
+        return result;
     }
 
     return result;
+};
+//按钮禁用样式
+let checkDelBtnStyle = {
+    cursor: "no-drop",
+    color: "#c8c9cc",
 };
 
 //计算年龄
@@ -117,11 +149,29 @@ let getAge = (birth) => {
     }
 };
 
+//检测图片路径是否正确
+let checkImage = (imageURL, date) => {
+    if (!imageURL) {
+        return "";
+    }
+    let basePath;
+    if (date) {
+    } else {
+        basePath = window.baseUrl + "/img";
+    }
+    let delimiter = (imageURL || "").startsWith("/") ? "" : "/";
+    return [basePath, imageURL].join(delimiter);
+};
 
+let checkFileNum = (file,fileList) => {
+    console.log(fileList)
+    Vue.prototype.$message({
+        type: 'error',
+        message: '当前已达到文件上传限制'
+    })
+};
 
-
-export
-{
+export {
     checkString,
     checkAccNo,
     checkMoney,
@@ -130,7 +180,12 @@ export
     checkNum,
     getToday,
     getComputerTime,
+    handlerTable,
     checkCode,
     checkFile,
+    checkDelBtnStyle,
     getAge,
-}
+    checkImage,
+    contactPhone,
+    checkFileNum
+};
